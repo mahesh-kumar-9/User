@@ -6,7 +6,7 @@ import {JSONPlaceHolderService} from './services/jsonplace-holder.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+  dataSource = [];
   rslt:Array<any>;
   
 constructor(private JSONPlaceHolder:JSONPlaceHolderService){
@@ -16,10 +16,11 @@ this.getDataFromAPI();
 
 getDataFromAPI(){
   this.JSONPlaceHolder.getData().subscribe((data)=>{
-    this.rslt=data;
+    this.dataSource = data.data;
+    //this.rslt=data;
     //console.log(data);
   })
 }
 
-displayedColumns: string[] = ['id', 'name'];
+displayedColumns: string[] = ['id', 'name', 'email'];
 }
